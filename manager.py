@@ -36,6 +36,13 @@ def complete_task(tasks, index_task):
     print(f"Task index {index_task} is invalid!")
   return
 
+def delete_completed_tasks(tasks):
+  for task in tasks:
+    if(task["completed"]):
+      tasks.remove(task)
+      print("Completed tasks were deleted!")
+
+  return
 
 tasks = [];
 while True:
@@ -44,7 +51,7 @@ while True:
   print("2. Show Tasks")
   print("3. Update Task")
   print("4. Complete Task")
-  print("5. Delete Complete Task")
+  print("5. Delete Completed Task")
   print("6. Quit")
 
   choose = input("Choose an option: ")
@@ -62,13 +69,13 @@ while True:
 
     update_task_name(tasks, index_task, new_task_name)
   elif choose == "4":
-    
-
     index_task = input("Type the task number to complete: ")
 
     complete_task(tasks, index_task)
     show_tasks(tasks)
-    break
+  elif choose == "5":
+    delete_completed_tasks(tasks)
+    show_tasks(tasks)
   elif choose == "6":
     break
 
