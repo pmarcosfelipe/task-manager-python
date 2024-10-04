@@ -18,13 +18,22 @@ def show_tasks(tasks):
   return
 
 def update_task_name(tasks, index_task, new_task_name):
-  if int(index_task) >= 0 and int(index_task) < len(tasks):
-    tasks[int(index_task) - 1]["name"] = new_task_name
+  adjusted_index_task = int(index_task) - 1
+  if adjusted_index_task >= 0 and adjusted_index_task < len(tasks):
+    tasks[adjusted_index_task]["name"] = new_task_name
     print(f"Task {index_task} update to {new_task_name}")
   else:
     print(f"Task index {index_task} is invalid!")
 
+  return
 
+def complete_task(tasks, index_task):
+  adjusted_index_task = int(index_task) - 1
+  if adjusted_index_task >= 0 and adjusted_index_task < len(tasks):
+    tasks[adjusted_index_task]["completed"] = True
+    print(f"Task {index_task} completed!")
+  else:
+    print(f"Task index {index_task} is invalid!")
   return
 
 
@@ -52,7 +61,15 @@ while True:
     new_task_name = input("Type the task name: ")
 
     update_task_name(tasks, index_task, new_task_name)
+  elif choose == "4":
+    
+
+    index_task = input("Type the task number to complete: ")
+
+    complete_task(tasks, index_task)
+    show_tasks(tasks)
+    break
   elif choose == "6":
     break
 
-  print("Program finalized.")
+print("Program finalized.")
