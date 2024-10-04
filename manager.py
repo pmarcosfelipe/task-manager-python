@@ -8,6 +8,14 @@ def create_task(tasks, name):
   print(f"Task {name} was successfully created...")
   return
 
+def show_tasks(tasks):
+  print("\nTask List")
+  for index, task in enumerate(tasks, start=1):
+    status = "✓" if task["completed"] else " "
+    name = task["name"]
+    print(f"{index}. [{status}] {name}")
+
+
 tasks = [];
 while True:
   print("\nMenu Task Manager: ")
@@ -23,7 +31,8 @@ while True:
   if choose == "1":
     task_name = input("Type task name: ")
     create_task(tasks, task_name)
-    break
+  elif choose == "2":
+    show_tasks(tasks)
   elif choose == "6":
     break
 
